@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Catalog>
+
+    <Ovens>
+        <Oven CAPACITY="100" DEPTH="100.0" HEIGHT="100.0" MODEL="mark2" POWER_CONSUMPTION="100" PRICE="100.0" WEIGHT="100.0" WIDTH="100.0"/>
+        <Oven CAPACITY="32" DEPTH="60.0" HEIGHT="45.5" MODEL="GIPSY" POWER_CONSUMPTION="100" PRICE="100.0" WEIGHT="10.0" WIDTH="59.5"/>
+        <Oven CAPACITY="33" DEPTH="60.0" HEIGHT="45.0" MODEL="Bomond007" POWER_CONSUMPTION="1500" PRICE="300.0" WEIGHT="12.0" WIDTH="68.0"/>
+    </Ovens>
+
+    <Refrigerators>
+        <Refrigerator FREEZER_CAPACITY="10" HEIGHT="200.0" MODEL="Maksim" OVERALL_CAPACITY="300" POWER_CONSUMPTION="100" PRICE="100.0" WEIGHT="20.0" WIDTH="70.0"/>
+        <Refrigerator FREEZER_CAPACITY="15" HEIGHT="180.0" MODEL="Zusim" OVERALL_CAPACITY="300" POWER_CONSUMPTION="200" PRICE="500.0" WEIGHT="30.0" WIDTH="80.0"/>
+    </Refrigerators>
+
+</Catalog>
