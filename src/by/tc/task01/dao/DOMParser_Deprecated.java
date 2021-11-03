@@ -28,11 +28,14 @@ import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-public class DOMParser {
+public class DOMParser_Deprecated {
 
-    public DOMParser() {};
+    public DOMParser_Deprecated() {};
 
-    public static final File DB_PATH = new File("src\\resources\\db.xml");
+    public static ClassLoader classLoader = DOMParser_Deprecated.class.getClassLoader();
+    public  static final File DB_PATH = new File(classLoader.getResource("resources/db.xml").getFile());
+
+
 
     public final static String MODEL = "MODEL";
     public final static String PRICE = "PRICE";
@@ -87,7 +90,7 @@ public class DOMParser {
                     parametersOfInstance.put(HEIGHT, height);
                     parametersOfInstance.put(WIDTH, width);
 
-                    applianceInstances.put(new Refrigerator(model, price, powerConsumption, weight, freezerCapacity, overallCapacity, height, width), parametersOfInstance);
+                    applianceInstances.put(new Refrigerator(model, SearchCriteria.REFRIGERATOR, price, powerConsumption, weight, freezerCapacity, overallCapacity, height, width), parametersOfInstance);
 
                 } break;
 
@@ -114,7 +117,7 @@ public class DOMParser {
                     parametersOfInstance.put(HEIGHT, height);
                     parametersOfInstance.put(WIDTH, width);
 
-                    applianceInstances.put(new Oven(model, price, powerConsumption, weight, capacity, depth, height, width), parametersOfInstance);
+                    applianceInstances.put(new Oven(model, SearchCriteria.OVEN, price, powerConsumption, weight, capacity, depth, height, width), parametersOfInstance);
                 } break;
             }
 
@@ -182,6 +185,8 @@ public class DOMParser {
         DOMSource source = new DOMSource(document);
 
         StreamResult res = new StreamResult(DB_PATH);
+
+
         transformer.transform(source, res);
     }
 }

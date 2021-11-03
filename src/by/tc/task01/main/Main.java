@@ -1,9 +1,6 @@
 package by.tc.task01.main;
 
-import by.tc.task01.dao.*;
 import by.tc.task01.entity.Appliance;
-import by.tc.task01.entity.Oven;
-import by.tc.task01.entity.Refrigerator;
 
 import java.io.IOException;
 import java.util.*;
@@ -35,8 +32,13 @@ public class Main {
 
         PrintApplianceInfo.print(applianceWithParameters);
 
-        service.add(SearchCriteria.REFRIGERATOR, new Refrigerator("ref", 100,
-                100,100,100,100,180,100));
+//        service.add(SearchCriteria.REFRIGERATOR, new Refrigerator("ref", SearchCriteria.REFRIGERATOR, 100,
+//                100,100,100,100,180,100));
+//        service.add(SearchCriteria.REFRIGERATOR, new Refrigerator("ref23", SearchCriteria.REFRIGERATOR, 1002,
+//                1002,1002,1002,1002,1802,1002));
+
+
     }
+
 
 }

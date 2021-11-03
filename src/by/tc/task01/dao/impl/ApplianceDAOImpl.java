@@ -1,7 +1,7 @@
 package by.tc.task01.dao.impl;
 
 import by.tc.task01.dao.ApplianceDAO;
-import by.tc.task01.dao.DOMParser;
+import by.tc.task01.dao.DOMParser_Deprecated;
 import by.tc.task01.entity.Appliance;
 import by.tc.task01.entity.criteria.Criteria;
 import org.xml.sax.SAXException;
@@ -16,7 +16,7 @@ public class ApplianceDAOImpl implements ApplianceDAO {
     @Override
     public List<Appliance> find (Criteria criteria) throws IOException, ParserConfigurationException, SAXException {
 
-        DOMParser parser = new DOMParser();
+        DOMParser_Deprecated parser = new DOMParser_Deprecated();
 
         List <Appliance> appliancesWithParameters = parser.findAppliance(criteria);
 
@@ -26,6 +26,7 @@ public class ApplianceDAOImpl implements ApplianceDAO {
     @Override
     public void add(String applianceType, Appliance appliance) throws ParserConfigurationException, IOException, TransformerException, SAXException {
 
-        DOMParser.addAppliance(applianceType, appliance);
+        DOMParser_Deprecated.addAppliance(applianceType, appliance);
     }
+
 }

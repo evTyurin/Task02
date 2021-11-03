@@ -5,12 +5,14 @@ import java.util.Objects;
 
 public abstract class Appliance implements Serializable {
     private String model;
+    private String type;
     private double price;
 
     public Appliance () {};
 
-    public Appliance (String model, double price) {
+    public Appliance (String model, String type, double price) {
         this.model = model;
+        this.type = type;
         this.price = price;
     }
 
@@ -20,6 +22,14 @@ public abstract class Appliance implements Serializable {
 
     public void setModel(String model) {
         this.model = model;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public double getPrice() {
@@ -35,21 +45,20 @@ public abstract class Appliance implements Serializable {
         if (this == o) return true;
         if (!(o instanceof Appliance)) return false;
         Appliance appliance = (Appliance) o;
-        return Double.compare(appliance.price, price) == 0 && Objects.equals(model, appliance.model);
+        return Double.compare(appliance.price, price) == 0 && Objects.equals(model, appliance.model) && Objects.equals(type, appliance.type);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(model, price);
+        return Objects.hash(model, type, price);
     }
 
     @Override
     public String toString() {
-
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Appliance{").append("model=").append(getModel())
-                .append(", price=").append(getPrice()).append('}');
-
-        return stringBuilder.toString();
+        return "Appliance{" +
+                "model='" + model + '\'' +
+                ", type='" + type + '\'' +
+                ", price=" + price +
+                '}';
     }
 }
