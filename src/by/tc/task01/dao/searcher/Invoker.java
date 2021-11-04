@@ -34,10 +34,10 @@ public class Invoker {
 //        return searchOven.search(Criteria criteria);
 //    }
 
-    public List<Appliance> searchRefrigerator (List<Appliance> appliances) {
-
-        return searchRefrigerator.search(Criteria criteria);
-    }
+//    public List<Appliance> searchRefrigerator (List<Appliance> appliances) {
+//
+//        return searchRefrigerator.search(Criteria criteria);
+//    }
 
 
 }

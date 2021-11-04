@@ -1,6 +1,5 @@
 package by.tc.task01.service.validation;
 
-import by.tc.task01.dao.DOMParser_Deprecated;
 import by.tc.task01.entity.Appliance;
 import by.tc.task01.entity.Oven;
 import by.tc.task01.entity.Refrigerator;

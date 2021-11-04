@@ -1,6 +1,5 @@
 package by.tc.task01.dao.util;
 
-import by.tc.task01.dao.DOMParser_Deprecated;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
