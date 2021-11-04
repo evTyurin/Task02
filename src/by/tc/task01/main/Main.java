@@ -3,6 +3,7 @@ package by.tc.task01.main;
 import by.tc.task01.dao.adder.ApplianceAdder;
 import by.tc.task01.dao.adder.OvenAdder;
 import by.tc.task01.dao.parser.ApplianceRepository;
+import by.tc.task01.dao.searcher.Searcher;
 import by.tc.task01.entity.Appliance;
 
 import java.io.IOException;
@@ -44,49 +45,51 @@ public class Main {
 //                1002,1002,1002,1002,1802,1002));
 
 
-//        ApplianceXMLParser2 aaa = new ApplianceXMLParser2();
-//        OvenP ovenp = new OvenP();
-//        aaa.setParse(ovenp);
-//        aaa.parse();
-//        RefP refp = new RefP();
-//        aaa.setParse(refp);
-//        aaa.parse();
-
-//        ApplianceRepository ddd = ApplianceRepository.getInstance();
-        ApplianceRepository ddddd = ApplianceRepository.getInstance();
-
-        for (Appliance appliance:ddddd.getData()) {
-            System.out.println("model = " + appliance.getModel());
-        }
-
-                service.add(SearchCriteria.REFRIGERATOR, new Refrigerator("ref23", 1002,
-                1002,1002,1002,1002,1802,1002));
+//        ApplianceRepository ddddd = ApplianceRepository.getInstance();
 //
-//      ApplianceRepository ddd = ApplianceRepository.getInstance();
-        ApplianceHandler df = ApplianceHandler.getInstance();
-        df.updateDocumentForParsing();
+//        for (Appliance appliance:ddddd.getData()) {
+//            System.out.println("model = " + appliance.getModel());
+//        }
+//
+//                service.add(SearchCriteria.REFRIGERATOR, new Refrigerator("ref23", 1002,
+//                1002,1002,1002,1002,1802,1002));
+//
+//        ApplianceHandler df = ApplianceHandler.getInstance();
+//        df.updateDocumentForParsing();
+//
+//        ApplianceRepository.getInstance();
+//        System.out.println("_______________________");
+//        for (Appliance appliance:ddddd.getData()) {
+//            System.out.println("model = " + appliance.getModel());
+//        }
+//        System.out.println("_______________________");
+//        ddddd.updateApplianceRepository();
+//        ApplianceRepository.getInstance();
+//        for (Appliance appliance:ddddd.getData()) {
+//            System.out.println("model = " + appliance.getModel());
+//        }
+//
+//
+//        OvenAdder jff = new OvenAdder();
+//        jff.add(new Oven("OVEN_3000", 1002,
+//                1002,1002,1002,1002,1802,1002));
+//
+//
+//        ApplianceAdder applianceAdder = new ApplianceAdder();
+//        applianceAdder.add(new Oven("OVEN_10000", 1002,
+//                1002,1002,1002,1002,1802,1002));
 
-        ApplianceRepository.getInstance();
-        System.out.println("_______________________");
-        for (Appliance appliance:ddddd.getData()) {
-            System.out.println("model = " + appliance.getModel());
-        }
-        System.out.println("_______________________");
-        ddddd.updateApplianceRepository();
-        ApplianceRepository.getInstance();
-        for (Appliance appliance:ddddd.getData()) {
-            System.out.println("model = " + appliance.getModel());
-        }
 
 
-        OvenAdder jff = new OvenAdder();
-        jff.add(new Oven("OVEN_3000", 1002,
-                1002,1002,1002,1002,1802,1002));
+        Criteria criteriaRefrigerator = new Criteria(SearchCriteria.Refrigerator.class.getSimpleName());
+        criteriaRefrigerator.add(SearchCriteria.Refrigerator.OVERALL_CAPACITY.toString(), 300.0);
+        criteriaRefrigerator.add(SearchCriteria.Refrigerator.WEIGHT.toString(), 30.0);
 
+//        applianceWithParameters = service.find(criteriaRefrigerator);
 
-        ApplianceAdder applianceAdder = new ApplianceAdder();
-        applianceAdder.add(new Oven("OVEN_10000", 1002,
-                1002,1002,1002,1002,1802,1002));
+        Searcher searcher = new Searcher();
+        searcher.search(criteriaRefrigerator);
+
 
     }
 

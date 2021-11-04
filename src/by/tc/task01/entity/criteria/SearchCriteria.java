@@ -1,6 +1,7 @@
 package by.tc.task01.entity.criteria;
 
 public final class SearchCriteria {
+    
 
     public static final String REFRIGERATOR = "Refrigerator";
     public static final String OVEN = "Oven";

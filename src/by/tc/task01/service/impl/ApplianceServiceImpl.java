@@ -21,6 +21,8 @@ public class ApplianceServiceImpl implements ApplianceService {
             return null;
         }
 
+
+
         DAOFactory factory = DAOFactory.getInstance();
         ApplianceDAO applianceDAO = factory.getApplianceDAO();
 

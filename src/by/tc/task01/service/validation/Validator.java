@@ -41,7 +41,7 @@ public class Validator {
                 return false;
             }
 
-            if(parameter.getKey().equals("OVERALL_CAPACITY") && Integer.parseInt(parameter.getValue().toString())  <= 0) {
+            if(parameter.getKey().equals("OVERALL_CAPACITY") && Double.parseDouble(parameter.getValue().toString())  <= 0) {
                 return false;
             }
         }
