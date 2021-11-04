@@ -9,10 +9,10 @@ public class PrintApplianceInfo {
         System.out.println(appliance);
     }
 
-    public static void print(List<Appliance> applianceList) {
-        for (Appliance appliance : applianceList) {
-            System.out.println(appliance);
-        }
-
-    }
+//    public static void print(List<Appliance> applianceList) {
+//        for (Appliance appliance : applianceList) {
+//            System.out.println(appliance);
+//        }
+//
+//    }
 }

@@ -10,9 +10,8 @@ public abstract class Appliance implements Serializable {
 
     public Appliance () {};
 
-    public Appliance (String model, String type, double price) {
+    public Appliance (String model, double price) {
         this.model = model;
-        this.type = type;
         this.price = price;
     }
 

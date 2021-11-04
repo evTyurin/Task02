@@ -13,5 +13,9 @@ public final class SearchCriteria {
         POWER_CONSUMPTION, WEIGHT, FREEZER_CAPACITY, OVERALL_CAPACITY, HEIGHT, WIDTH
     }
 
+    public static enum ApplianceType{
+        REFRIGERATOR, OVEN
+    }
+
     private SearchCriteria() {}
 }

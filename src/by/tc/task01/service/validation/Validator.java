@@ -13,35 +13,35 @@ public class Validator {
     public static boolean criteriaValidator(Criteria criteria) {
 
         for (Map.Entry<String, Object> parameter : criteria.getCriteria().entrySet()) {
-            if(parameter.getKey().equals(DOMParser_Deprecated.POWER_CONSUMPTION) && Integer.parseInt(parameter.getValue().toString())  <= 0) {
+            if(parameter.getKey().equals("POWER_CONSUMPTION") && Integer.parseInt(parameter.getValue().toString())  <= 0) {
                 return false;
             }
 
-            if(parameter.getKey().equals(DOMParser_Deprecated.WEIGHT) && Double.parseDouble(parameter.getValue().toString())  <= 0) {
+            if(parameter.getKey().equals("WEIGHT") && Double.parseDouble(parameter.getValue().toString())  <= 0) {
                 return false;
             }
 
-            if(parameter.getKey().equals(DOMParser_Deprecated.CAPACITY) && Integer.parseInt(parameter.getValue().toString())  <= 0) {
+            if(parameter.getKey().equals("CAPACITY") && Integer.parseInt(parameter.getValue().toString())  <= 0) {
                 return false;
             }
 
-            if(parameter.getKey().equals(DOMParser_Deprecated.DEPTH) && Double.parseDouble(parameter.getValue().toString())  <= 0) {
+            if(parameter.getKey().equals("DEPTH") && Double.parseDouble(parameter.getValue().toString())  <= 0) {
                 return false;
             }
 
-            if(parameter.getKey().equals(DOMParser_Deprecated.HEIGHT) && Double.parseDouble(parameter.getValue().toString())  <= 0) {
+            if(parameter.getKey().equals("HEIGHT") && Double.parseDouble(parameter.getValue().toString())  <= 0) {
                 return false;
             }
 
-            if(parameter.getKey().equals(DOMParser_Deprecated.WIDTH) && Double.parseDouble(parameter.getValue().toString())  <= 0) {
+            if(parameter.getKey().equals("WIDTH") && Double.parseDouble(parameter.getValue().toString())  <= 0) {
                 return false;
             }
 
-            if(parameter.getKey().equals(DOMParser_Deprecated.FREEZER_CAPACITY) && Integer.parseInt(parameter.getValue().toString())  <= 0) {
+            if(parameter.getKey().equals("FREEZER_CAPACITY") && Integer.parseInt(parameter.getValue().toString())  <= 0) {
                 return false;
             }
 
-            if(parameter.getKey().equals(DOMParser_Deprecated.OVERALL_CAPACITY) && Integer.parseInt(parameter.getValue().toString())  <= 0) {
+            if(parameter.getKey().equals("OVERALL_CAPACITY") && Integer.parseInt(parameter.getValue().toString())  <= 0) {
                 return false;
             }
         }

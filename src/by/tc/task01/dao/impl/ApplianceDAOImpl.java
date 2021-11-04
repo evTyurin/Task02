@@ -18,15 +18,16 @@ public class ApplianceDAOImpl implements ApplianceDAO {
 
         DOMParser_Deprecated parser = new DOMParser_Deprecated();
 
-        List <Appliance> appliancesWithParameters = parser.findAppliance(criteria);
+//        List <Appliance> appliancesWithParameters = parser.findAppliance(criteria);
 
-        return appliancesWithParameters;
+//        return appliancesWithParameters;
+        return null;
     }
 
     @Override
     public void add(String applianceType, Appliance appliance) throws ParserConfigurationException, IOException, TransformerException, SAXException {
 
-        DOMParser_Deprecated.addAppliance(applianceType, appliance);
+//        DOMParser_Deprecated.addAppliance(applianceType, appliance);
     }
 
 }

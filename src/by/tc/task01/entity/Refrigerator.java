@@ -13,9 +13,9 @@ public class Refrigerator extends Appliance{
 
     public Refrigerator () {};
 
-    public Refrigerator (String model, String type, double price, int powerConsumption, double weight,
+    public Refrigerator (String model, double price, int powerConsumption, double weight,
                          double freezerCapacity, double overallCapacity, double height, double width) {
-        super(model, type, price);
+        super(model, price);
         this.powerConsumption = powerConsumption;
         this.weight = weight;
         this.freezerCapacity = freezerCapacity;
