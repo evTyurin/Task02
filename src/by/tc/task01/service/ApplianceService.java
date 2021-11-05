@@ -11,8 +11,29 @@ import java.util.List;
 
 public interface ApplianceService {
 
+    /**
+     * Send command to DAO to find Appliance instances among all Appliance instances that kept in List of appliances
+     *
+     * @param criteria
+     * @return List of Appliance instances chosen by criteria
+     * @throws IOException
+     * @throws ParserConfigurationException
+     * @throws SAXException
+     * @throws TransformerException
+     */
+
     List<Appliance> find(Criteria criteria) throws IOException, ParserConfigurationException, SAXException, TransformerException;
 
+    /**
+     * Send command to DAO to add properties of the instance of Appliance to XML file
+     *
+     * @param appliance
+     * @return true if adding was successful
+     * @throws ParserConfigurationException
+     * @throws IOException
+     * @throws TransformerException
+     * @throws SAXException
+     */
     boolean add(Appliance appliance) throws ParserConfigurationException, IOException, TransformerException, SAXException;
 
 }

@@ -9,6 +9,13 @@ import by.tc.task01.entity.criteria.SearchCriteria;
 import java.util.Map;
 
 public class Validator {
+
+    /**
+     * Check if chosen criteria are valid (bigger than 0)
+     *
+     * @param criteria
+     * @return true if criteria are valid
+     */
     public static boolean criteriaValidator(Criteria criteria) {
 
         for (Map.Entry<String, Object> parameter : criteria.getCriteria().entrySet()) {
@@ -46,6 +53,13 @@ public class Validator {
         }
         return true;
     }
+
+    /**
+     *Check chosen criteria by type of appliance
+     *
+     * @param appliance
+     * @return true if criteria are valid for chosen type of appliance
+     */
 
     public static boolean applianceValidator(Appliance appliance) {
 

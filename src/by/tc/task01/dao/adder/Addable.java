@@ -7,5 +7,13 @@ import javax.xml.transform.TransformerException;
 
 public interface Addable {
 
+    /**
+     * Add properties of the instance of Appliance to XML file
+     *
+     * @param newAppliance
+     * @return true if adding was successful
+     * @throws TransformerException
+     */
+
     boolean add(Appliance newAppliance) throws TransformerException;
 }

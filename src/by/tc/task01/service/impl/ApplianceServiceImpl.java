@@ -16,6 +16,15 @@ import java.util.List;
 
 public class ApplianceServiceImpl implements ApplianceService {
 
+    /**
+     * Find of appliances by chosen criteria
+     * @param criteria
+     * @return List of appliances filled using criteria
+     * @throws IOException
+     * @throws ParserConfigurationException
+     * @throws SAXException
+     * @throws TransformerException
+     */
     @Override
     public List<Appliance> find(Criteria criteria) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
@@ -27,6 +36,16 @@ public class ApplianceServiceImpl implements ApplianceService {
 
         return applianceDAO.find(criteria);
     }
+
+    /**
+     * Add properties of instance of Appliance to XML file
+     * @param appliance
+     * @return true if appliance added successfully
+     * @throws ParserConfigurationException
+     * @throws IOException
+     * @throws TransformerException
+     * @throws SAXException
+     */
 
     @Override
     public boolean add(Appliance appliance) throws ParserConfigurationException, IOException, TransformerException, SAXException {
