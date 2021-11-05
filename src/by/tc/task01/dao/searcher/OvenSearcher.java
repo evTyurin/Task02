@@ -2,7 +2,7 @@ package by.tc.task01.dao.searcher;
 
 import by.tc.task01.dao.parser.ApplianceRepository;
 import by.tc.task01.entity.Appliance;
-import by.tc.task01.entity.Refrigerator;
+import by.tc.task01.entity.Oven;
 import by.tc.task01.entity.criteria.Criteria;
 import by.tc.task01.entity.criteria.SearchCriteria;
 
@@ -11,13 +11,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class RefrigeratorSearcher implements Searchable{
+public class OvenSearcher implements Searchable{
     private ApplianceRepository instance;
     private final List<Appliance> appliances;
     private List<Appliance> appliancesByCriteria;
     private Map<String, Object> parametersOfInstance;
 
-    public RefrigeratorSearcher() {
+    public OvenSearcher() {
         instance = ApplianceRepository.getInstance();
         appliances = instance.getData();
     }
@@ -44,19 +44,19 @@ public class RefrigeratorSearcher implements Searchable{
     private Map<String, Object> getParemetrsOfInstance(Appliance appliance) {
         parametersOfInstance = new HashMap();
 
-        Refrigerator refrigerator = (Refrigerator) appliance;
+        Oven oven = (Oven) appliance;
 
-        parametersOfInstance.put(SearchCriteria.Refrigerator.OVERALL_CAPACITY.toString(), refrigerator.getOverallCapacity());
-        parametersOfInstance.put(SearchCriteria.Refrigerator.WEIGHT.toString(), refrigerator.getWeight());
-        parametersOfInstance.put(SearchCriteria.Refrigerator.FREEZER_CAPACITY.toString(), refrigerator.getFreezerCapacity());
-        parametersOfInstance.put(SearchCriteria.Refrigerator.HEIGHT.toString(), refrigerator.getHeight());
-        parametersOfInstance.put(SearchCriteria.Refrigerator.POWER_CONSUMPTION.toString(), refrigerator.getPowerConsumption());
-        parametersOfInstance.put(SearchCriteria.Refrigerator.WIDTH.toString(), refrigerator.getWidth());
+        parametersOfInstance.put(SearchCriteria.Oven.POWER_CONSUMPTION.toString(), oven.getPowerConsumption());
+        parametersOfInstance.put(SearchCriteria.Oven.WEIGHT.toString(), oven.getWeight());
+        parametersOfInstance.put(SearchCriteria.Oven.CAPACITY.toString(), oven.getCapacity());
+        parametersOfInstance.put(SearchCriteria.Oven.DEPTH.toString(), oven.getDepth());
+        parametersOfInstance.put(SearchCriteria.Oven.HEIGHT.toString(), oven.getHeight());
+        parametersOfInstance.put(SearchCriteria.Oven.WIDTH.toString(), oven.getWidth());
 
         return parametersOfInstance;
     }
 
-    private boolean isValidInstance(Map<String, Object> putInside, Criteria criteria) {
+    private  boolean isValidInstance(Map<String, Object> putInside, Criteria criteria) {
         int criteriaAmount = criteria.getCriteria().entrySet().size();
 
         for (Map.Entry<String, Object> instanceParameter : putInside.entrySet()) {
@@ -69,7 +69,6 @@ public class RefrigeratorSearcher implements Searchable{
                 }
             }
         }
-
         return false;
     }
 

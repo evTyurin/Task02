@@ -13,10 +13,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RefrigeratorParser implements Parseble{
+public class RefrigeratorParser implements Parcelable {
 
-    private List<Appliance> appliances;
-    private NodeList elements;
+    private final List<Appliance> appliances;
+    private final NodeList elements;
     private Refrigerator refrigerator;
 
     public RefrigeratorParser(Document document) {
@@ -24,7 +24,7 @@ public class RefrigeratorParser implements Parseble{
         elements = document.getElementsByTagName(Refrigerator.class.getSimpleName());
     }
 
-    public List<Appliance> parseApplianceXML () throws IOException, ParserConfigurationException, SAXException {
+    public List<Appliance> parseApplianceXML() throws IOException, ParserConfigurationException, SAXException {
 
         for (int i = 0; i < elements.getLength(); i++) {
 
@@ -36,15 +36,11 @@ public class RefrigeratorParser implements Parseble{
         return appliances;
     }
 
-    public void add (Appliance appliance) {
-        appliances.add(appliance);
-    }
-
-    public Refrigerator createAppliance (NodeList elements, int numberOfElement) {
+    private Refrigerator createAppliance(NodeList elements, int numberOfElement) {
         NamedNodeMap attributes = elements.item(numberOfElement).getAttributes();
 
-        String model = attributes.getNamedItem("MODEL").getNodeValue();
-        double price = Double.parseDouble(attributes.getNamedItem("PRICE").getNodeValue());
+        String model = attributes.getNamedItem(SearchCriteria.Appliance.MODEL.toString()).getNodeValue();
+        double price = Double.parseDouble(attributes.getNamedItem(SearchCriteria.Appliance.PRICE.toString()).getNodeValue());
         int powerConsumption = Integer.parseInt(attributes.getNamedItem(SearchCriteria.Refrigerator.POWER_CONSUMPTION.toString()).getNodeValue());
         double weight = Double.parseDouble(attributes.getNamedItem(SearchCriteria.Refrigerator.WEIGHT.toString()).getNodeValue());
         double freezerCapacity = Double.parseDouble(attributes.getNamedItem(SearchCriteria.Refrigerator.FREEZER_CAPACITY.toString()).getNodeValue());

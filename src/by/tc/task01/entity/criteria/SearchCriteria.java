@@ -1,7 +1,6 @@
 package by.tc.task01.entity.criteria;
 
 public final class SearchCriteria {
-    
 
     public static final String REFRIGERATOR = "Refrigerator";
     public static final String OVEN = "Oven";
@@ -16,6 +15,10 @@ public final class SearchCriteria {
 
     public static enum ApplianceType{
         REFRIGERATOR, OVEN
+    }
+
+    public static enum Appliance{
+        MODEL, PRICE
     }
 
     private SearchCriteria() {}

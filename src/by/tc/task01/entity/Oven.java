@@ -11,9 +11,9 @@ public class Oven extends Appliance{
     private double height;
     private double width;
 
-    public Oven () {};
+    public Oven() {};
 
-    public Oven (String model, double price, int powerConsumption, double weight,
+    public Oven(String model, double price, int powerConsumption, double weight,
                  int capacity, double depth, double height, double width) {
         super(model, price);
         this.powerConsumption = powerConsumption;

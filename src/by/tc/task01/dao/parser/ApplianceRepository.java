@@ -4,12 +4,12 @@ import by.tc.task01.entity.Appliance;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.ws.http.HTTPException;
 import java.io.IOException;
 import java.util.List;
 
 public class ApplianceRepository {
     private static ApplianceRepository instance;
-
     private List<Appliance> data;
     private final ApplianceXMLParser parser;
 
@@ -19,7 +19,7 @@ public class ApplianceRepository {
         try {
             data = parser.parse();
         } catch (ParserConfigurationException | IOException | SAXException ignored) {
-            System.out.println("someText"); //TODO
+            throw new RuntimeException() {};
         }
 
     }
@@ -27,8 +27,8 @@ public class ApplianceRepository {
     public void updateApplianceRepository() {
         try {
             data = parser.parse();
-        } catch (ParserConfigurationException | IOException | SAXException ignored) {
-            System.out.println("someText"); //TODO
+        } catch (ParserConfigurationException | IOException | SAXException e) {
+            throw new RuntimeException() {};
         }
 
     }

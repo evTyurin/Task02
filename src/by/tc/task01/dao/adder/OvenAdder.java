@@ -1,8 +1,9 @@
 package by.tc.task01.dao.adder;
 
-import by.tc.task01.dao.util.ApplianceHandler;
+import by.tc.task01.dao.util.ApplianceHandlerUtil;
 import by.tc.task01.entity.Appliance;
 import by.tc.task01.entity.Oven;
+import by.tc.task01.entity.criteria.SearchCriteria;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -15,41 +16,53 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.IOException;
 
 public class OvenAdder implements Addable {
-    private final ApplianceHandler instance = ApplianceHandler.getInstance();
-    private final Document documentForAdding = instance.getDocument();
+    private final ApplianceHandlerUtil instance;
+    private final Document documentForAdding;
 
-
-    public OvenAdder() throws IOException, SAXException, ParserConfigurationException {}
+    public OvenAdder() throws IOException, SAXException, ParserConfigurationException {
+        instance = ApplianceHandlerUtil.getInstance();
+        documentForAdding = instance.getDocument();
+    }
 
     @Override
-    public boolean add(Appliance newAppliance) throws TransformerException {
+    public boolean add(Appliance appliance) throws TransformerException {
+        boolean flag = setNodeLiStElement(appliance);
+        if (flag) {
+            writeToXML();
+        }
 
-        Oven oven = (Oven) newAppliance;
+        return flag;
+    }
+
+    private boolean setNodeLiStElement(Appliance appliance) {
+        Oven oven = (Oven) appliance;
 
         NodeList nodes = documentForAdding.getElementsByTagName(Oven.class.getSimpleName());
         Element element = documentForAdding.createElement(Oven.class.getSimpleName());
 
-        element.setAttribute("MODEL", oven.getModel());
-        element.setAttribute("PRICE", ((Double) oven.getPrice()).toString());
-        element.setAttribute("POWER_CONSUMPTION", ((Integer) oven.getPowerConsumption()).toString());
-        element.setAttribute("WEIGHT", ((Double) oven.getWeight()).toString());
-        element.setAttribute("CAPACITY", ((Integer) oven.getCapacity()).toString());
-        element.setAttribute("DEPTH", ((Double) oven.getDepth()).toString());
-        element.setAttribute("HEIGHT", ((Double) oven.getHeight()).toString());
-        element.setAttribute("WIDTH", ((Double) oven.getWidth()).toString());
+        element.setAttribute(SearchCriteria.Appliance.MODEL.toString(), oven.getModel());
+        element.setAttribute(SearchCriteria.Appliance.PRICE.toString(), ((Double) oven.getPrice()).toString());
+        element.setAttribute(SearchCriteria.Oven.POWER_CONSUMPTION.toString(), ((Integer) oven.getPowerConsumption()).toString());
+        element.setAttribute(SearchCriteria.Oven.WEIGHT.toString(), ((Double) oven.getWeight()).toString());
+        element.setAttribute(SearchCriteria.Oven.CAPACITY.toString(), ((Integer) oven.getCapacity()).toString());
+        element.setAttribute(SearchCriteria.Oven.DEPTH.toString(), ((Double) oven.getDepth()).toString());
+        element.setAttribute(SearchCriteria.Oven.HEIGHT.toString(), ((Double) oven.getHeight()).toString());
+        element.setAttribute(SearchCriteria.Oven.WIDTH.toString(), ((Double) oven.getWidth()).toString());
 
         nodes.item(0).getParentNode().insertBefore(element, nodes.item(0));
 
+        return element.hasAttributes();
+    }
+
+    private void writeToXML() throws TransformerException {
         Transformer transformer = TransformerFactory.newInstance().newTransformer();
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 
         DOMSource source = new DOMSource(documentForAdding);
 
-        StreamResult res = new StreamResult(instance.getApplianceXMLPath());
+        StreamResult result = new StreamResult(instance.getApplianceXMLPath());
 
-        transformer.transform(source, res);
-
-        return false;
+        transformer.transform(source, result);
     }
 
 }

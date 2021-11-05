@@ -11,8 +11,8 @@ import java.util.List;
 
 public interface ApplianceDAO {
 
-    List<Appliance> find(Criteria criteria) throws IOException, ParserConfigurationException, SAXException;
+    List<Appliance> find(Criteria criteria) throws IOException, ParserConfigurationException, SAXException, TransformerException;
 
-    void add(String applianceType, Appliance appliance) throws ParserConfigurationException, IOException, TransformerException, SAXException;
+    boolean add(Appliance appliance) throws ParserConfigurationException, IOException, TransformerException, SAXException;
 
 }

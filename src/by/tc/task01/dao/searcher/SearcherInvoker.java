@@ -12,12 +12,12 @@ import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.util.List;
 
-public class Invoker {
+public class SearcherInvoker {
     private Searchable searchOven;
     private Searchable searchRefrigerator;
 
-    public Invoker() throws IOException, ParserConfigurationException, SAXException {
-//        searchOven = new OvenAdder();
+    public SearcherInvoker() throws IOException, ParserConfigurationException, SAXException {
+        searchOven = new OvenSearcher();
         searchRefrigerator = new RefrigeratorSearcher();
     }
 
@@ -29,15 +29,11 @@ public class Invoker {
         this.searchRefrigerator = searchRefrigerator;
     }
 
-//    public List<Appliance> searchOven (List<Appliance> appliances) {
-//
-//        return searchOven.search(Criteria criteria);
-//    }
+    public List<Appliance> searchOven(Criteria criteria) {
+        return searchOven.search(criteria);
+    }
 
-//    public List<Appliance> searchRefrigerator (List<Appliance> appliances) {
-//
-//        return searchRefrigerator.search(Criteria criteria);
-//    }
-
-
+    public List<Appliance> searchRefrigerator(Criteria criteria) {
+        return searchRefrigerator.search(criteria);
+    }
 }

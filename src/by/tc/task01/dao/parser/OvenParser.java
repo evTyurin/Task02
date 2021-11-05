@@ -13,9 +13,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OvenParser implements Parseble{
-    private List<Appliance> appliances;
-    private NodeList elements;
+public class OvenParser implements Parcelable {
+    private final List<Appliance> appliances;
+    private final NodeList elements;
     private Oven oven;
 
     public OvenParser(Document document) {
@@ -24,7 +24,7 @@ public class OvenParser implements Parseble{
     }
 
     @Override
-    public List<Appliance> parseApplianceXML () throws IOException, ParserConfigurationException, SAXException {
+    public List<Appliance> parseApplianceXML() throws IOException, ParserConfigurationException, SAXException {
 
         for (int i = 0; i < elements.getLength(); i++) {
 
@@ -32,19 +32,14 @@ public class OvenParser implements Parseble{
             appliances.add(oven);
             oven = null;
         }
-
         return appliances;
     }
 
-    public void add (Appliance appliance) {
-        appliances.add(appliance);
-    }
-
-    public Oven createAppliance (NodeList elements, int numberOfElement) {
+    private Oven createAppliance(NodeList elements, int numberOfElement) {
         NamedNodeMap attributes = elements.item(numberOfElement).getAttributes();
 
-        String model = attributes.getNamedItem("MODEL").getNodeValue();
-        double price = Double.parseDouble(attributes.getNamedItem("PRICE").getNodeValue());
+        String model = attributes.getNamedItem(SearchCriteria.Appliance.MODEL.toString()).getNodeValue();
+        double price = Double.parseDouble(attributes.getNamedItem(SearchCriteria.Appliance.PRICE.toString()).getNodeValue());
         int powerConsumption = Integer.parseInt(attributes.getNamedItem(SearchCriteria.Oven.POWER_CONSUMPTION.toString()).getNodeValue());
         double weight = Double.parseDouble(attributes.getNamedItem(SearchCriteria.Oven.WEIGHT.toString()).getNodeValue());
         int capacity = Integer.parseInt(attributes.getNamedItem(SearchCriteria.Oven.CAPACITY.toString()).getNodeValue());
@@ -55,8 +50,4 @@ public class OvenParser implements Parseble{
         return new Oven(model, price, powerConsumption, weight, capacity, depth, height, width);
     }
 
-
-
 }
-
-// CONCRETE COMMAND

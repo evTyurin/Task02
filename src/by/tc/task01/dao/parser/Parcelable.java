@@ -7,6 +7,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.List;
 
-public interface Parseble {
-    List<Appliance> parseApplianceXML () throws IOException, ParserConfigurationException, SAXException;
+public interface Parcelable {
+    List<Appliance> parseApplianceXML() throws IOException, ParserConfigurationException, SAXException;
 }

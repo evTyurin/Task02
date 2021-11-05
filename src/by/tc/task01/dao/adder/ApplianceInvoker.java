@@ -1,6 +1,5 @@
 package by.tc.task01.dao.adder;
 
-import by.tc.task01.dao.parser.Parseble;
 import by.tc.task01.entity.Appliance;
 import org.xml.sax.SAXException;
 
@@ -25,14 +24,12 @@ public class ApplianceInvoker {
         this.addRefrigerator = addRefrigerator;
     }
 
-    boolean addOven (Appliance appliance) throws TransformerException {
-        addOven.add(appliance);
-        return false;
+    boolean addOven(Appliance appliance) throws TransformerException {
+        return addOven.add(appliance);
     }
 
-    boolean addRefrigerator (Appliance appliance) throws TransformerException {
-        addRefrigerator.add(appliance);
-        return false;
+    boolean addRefrigerator(Appliance appliance) throws TransformerException {
+        return addRefrigerator.add(appliance);
     }
 
 }

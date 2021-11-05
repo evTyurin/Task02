@@ -7,7 +7,7 @@ public final class DAOFactory {
 
     private final ApplianceDAO applianceDAO = new ApplianceDAOImpl();
 
-    private DAOFactory () {};
+    private DAOFactory() {};
 
     public ApplianceDAO getApplianceDAO() {
         return applianceDAO;
@@ -16,5 +16,4 @@ public final class DAOFactory {
     public static DAOFactory getInstance() {
         return instance;
     }
-
 }

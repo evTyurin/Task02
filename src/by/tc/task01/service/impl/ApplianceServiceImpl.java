@@ -11,18 +11,17 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 public class ApplianceServiceImpl implements ApplianceService {
 
     @Override
-    public List<Appliance> find(Criteria criteria) throws IOException, ParserConfigurationException, SAXException {
+    public List<Appliance> find(Criteria criteria) throws IOException, ParserConfigurationException, SAXException, TransformerException {
+
         if (!Validator.criteriaValidator(criteria)) {
-            return null;
+            return Collections.EMPTY_LIST;
         }
-
-
-
         DAOFactory factory = DAOFactory.getInstance();
         ApplianceDAO applianceDAO = factory.getApplianceDAO();
 
@@ -30,15 +29,16 @@ public class ApplianceServiceImpl implements ApplianceService {
     }
 
     @Override
-    public void add (String applianceType, Appliance appliance) throws ParserConfigurationException, IOException, TransformerException, SAXException {
+    public boolean add(Appliance appliance) throws ParserConfigurationException, IOException, TransformerException, SAXException {
 
-        if (!Validator.applianceValidator(appliance)) {
-            return;
+        if (Validator.applianceValidator(appliance)) {
+            DAOFactory factory = DAOFactory.getInstance();
+            ApplianceDAO applianceDAO = factory.getApplianceDAO();
+
+            applianceDAO.add(appliance);
+            return true;
+        } else {
+            return false;
         }
-
-        DAOFactory factory = DAOFactory.getInstance();
-        ApplianceDAO applianceDAO = factory.getApplianceDAO();
-
-        applianceDAO.add(applianceType, appliance);
-    };
+    }
 }

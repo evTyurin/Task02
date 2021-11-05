@@ -9,26 +9,23 @@ import javax.xml.transform.TransformerException;
 import java.io.IOException;
 
 public class ApplianceAdder {
-
     private final ApplianceInvoker invoker;
-    private final RefrigeratorAdder refrigeratorAdder = new RefrigeratorAdder();
 
     public ApplianceAdder() throws IOException, ParserConfigurationException, SAXException {
        invoker = new ApplianceInvoker();
     }
 
-    public boolean add (Appliance appliance) throws TransformerException {
+    public boolean add(Appliance appliance) throws TransformerException {
         switch (appliance.getClass().getSimpleName()) {
             case SearchCriteria.OVEN: {
                 invoker.addOven(appliance);
-                break;
+                return true;
             }
             case SearchCriteria.REFRIGERATOR: {
                 invoker.addRefrigerator(appliance);
-                break;
+                return true;
             }
         }
-
         return false;
     }
 

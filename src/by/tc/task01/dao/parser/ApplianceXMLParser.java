@@ -1,6 +1,6 @@
 package by.tc.task01.dao.parser;
 
-import by.tc.task01.dao.util.ApplianceHandler;
+import by.tc.task01.dao.util.ApplianceHandlerUtil;
 import by.tc.task01.entity.Appliance;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
@@ -12,23 +12,22 @@ import java.util.List;
 
 public class ApplianceXMLParser {
 
-    private Document documentForParsing;
-    private Parseble parse;
+    private Parcelable parse;
     private List<Appliance> appliances;
-    private ApplianceHandler instance;
+    private final ApplianceHandlerUtil instance;
 
-    public void setParse(Parseble parse) {
+    public void setParse(Parcelable parse) {
         this.parse = parse;
     }
 
     public ApplianceXMLParser()  {
         appliances = new ArrayList<>();
-        instance = ApplianceHandler.getInstance();
+        instance = ApplianceHandlerUtil.getInstance();
     }
 
-    public List<Appliance> parse()  throws ParserConfigurationException, IOException, SAXException{
+    public List<Appliance> parse() throws ParserConfigurationException, IOException, SAXException{
 
-        documentForParsing = instance.getDocument();
+        Document documentForParsing = instance.getDocument();
         setParse(new OvenParser(documentForParsing));
         appliances = parse.parseApplianceXML();
 
