@@ -19,22 +19,21 @@ public class OvenAdder implements Addable {
     private final ApplianceHandlerUtil instance;
     private final Document documentForAdding;
 
-    public OvenAdder() throws IOException, SAXException, ParserConfigurationException {
+    OvenAdder() throws IOException, SAXException, ParserConfigurationException {
         instance = ApplianceHandlerUtil.getInstance();
         documentForAdding = instance.getDocument();
     }
 
     @Override
     public boolean add(Appliance appliance) throws TransformerException {
-        boolean flag = setNodeLiStElement(appliance);
+        boolean flag = setNodeListElement(appliance);
         if (flag) {
             writeToXML();
         }
-
         return flag;
     }
 
-    private boolean setNodeLiStElement(Appliance appliance) {
+    private boolean setNodeListElement(Appliance appliance) {
         Oven oven = (Oven) appliance;
 
         NodeList nodes = documentForAdding.getElementsByTagName(Oven.class.getSimpleName());

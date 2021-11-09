@@ -18,7 +18,7 @@ public class ApplianceRepository {
         parser = new ApplianceXMLParser();
         try {
             data = parser.parse();
-        } catch (ParserConfigurationException | IOException | SAXException ignored) {
+        } catch (ParserConfigurationException | IOException | SAXException e) {
             throw new RuntimeException() {};
         }
 

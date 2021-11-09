@@ -20,7 +20,7 @@ public class ApplianceXMLParser {
         this.parse = parse;
     }
 
-    public ApplianceXMLParser()  {
+    ApplianceXMLParser()  {
         appliances = new ArrayList<>();
         instance = ApplianceHandlerUtil.getInstance();
     }

@@ -53,7 +53,6 @@ public class ApplianceServiceImpl implements ApplianceService {
         if (Validator.applianceValidator(appliance)) {
             DAOFactory factory = DAOFactory.getInstance();
             ApplianceDAO applianceDAO = factory.getApplianceDAO();
-
             applianceDAO.add(appliance);
             return true;
         } else {

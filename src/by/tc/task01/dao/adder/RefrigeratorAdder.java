@@ -19,7 +19,7 @@ public class RefrigeratorAdder implements Addable {
     private ApplianceHandlerUtil instance;
     private Document document;
 
-    public RefrigeratorAdder() throws IOException, SAXException, ParserConfigurationException {
+    RefrigeratorAdder() throws IOException, SAXException, ParserConfigurationException {
         instance = ApplianceHandlerUtil.getInstance();
         document = instance.getDocument();
     }

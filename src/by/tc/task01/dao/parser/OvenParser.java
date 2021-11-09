@@ -18,7 +18,7 @@ public class OvenParser implements Parcelable {
     private final NodeList elements;
     private Oven oven;
 
-    public OvenParser(Document document) {
+    OvenParser(Document document) {
         appliances = new ArrayList<>();
         elements = document.getElementsByTagName(Oven.class.getSimpleName());
     }

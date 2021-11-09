@@ -1,6 +1,9 @@
 package by.tc.task01.main;
 
+import by.tc.task01.dao.adder.ApplianceAdder;
 import by.tc.task01.dao.adder.OvenAdder;
+//import by.tc.task01.dao.searcher.OvenSearcher;
+import by.tc.task01.dao.impl.ApplianceDAOImpl;
 import by.tc.task01.dao.searcher.RefrigeratorSearcher;
 import by.tc.task01.dao.util.ApplianceHandlerUtil;
 import by.tc.task01.entity.Appliance;
@@ -45,6 +48,13 @@ public class Main {
         applianceWithParameters = service.find(criteriaRefrigerator);
 
         PrintApplianceInfo.print(applianceWithParameters);
+
+
+        ///////////////////////////////////
+
+
+        ApplianceDAOImpl dfsdf = new ApplianceDAOImpl();
+        dfsdf.add(new Oven("hiii", 100, 250,10,50,100,180,120));
 
     }
 }

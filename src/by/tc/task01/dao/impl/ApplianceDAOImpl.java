@@ -12,23 +12,21 @@ import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.util.List;
 
-public class ApplianceDAOImpl implements ApplianceDAO {
+public final class ApplianceDAOImpl implements ApplianceDAO {
+
+    public ApplianceDAOImpl() {}
 
     @Override
     public List<Appliance> find(Criteria criteria) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
-        ApplianceSearcher applianceSearcher = new ApplianceSearcher();
-
+        ApplianceSearcher applianceSearcher = ApplianceSearcher.getApplianceSearcher();
         return applianceSearcher.search(criteria);
     }
 
     @Override
     public boolean add(Appliance appliance) throws ParserConfigurationException, IOException, TransformerException, SAXException {
 
-        ApplianceAdder applianceAdder = new ApplianceAdder();
-        applianceAdder.add(appliance);
-
-        return true;
+        ApplianceAdder applianceAdder = ApplianceAdder.getInstance();
+        return applianceAdder.add(appliance);
     }
-
 }

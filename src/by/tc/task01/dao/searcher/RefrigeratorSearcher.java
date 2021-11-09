@@ -11,13 +11,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class RefrigeratorSearcher implements Searchable{
+public class RefrigeratorSearcher implements Searchable {
     private ApplianceRepository instance;
     private final List<Appliance> appliances;
-    private List<Appliance> appliancesByCriteria;
+    private List<Appliance> appliancesSearchByCriteria;
     private Map<String, Object> parametersOfInstance;
 
-    public RefrigeratorSearcher() {
+    RefrigeratorSearcher() {
         instance = ApplianceRepository.getInstance();
         appliances = instance.getData();
     }
@@ -25,20 +25,22 @@ public class RefrigeratorSearcher implements Searchable{
     @Override
     public List<Appliance> search(Criteria criteria) {
 
-        appliancesByCriteria = new ArrayList<>();
+        appliancesSearchByCriteria = new ArrayList<>();
 
         for (Appliance appliance : appliances) {
-            if (appliance.getClass().getSimpleName().equals(criteria.getGroupSearchName())) {
-
-                parametersOfInstance = getParemetrsOfInstance(appliance);
-
-                if (isValidInstance(parametersOfInstance, criteria)) {
-                    appliancesByCriteria.add(appliance);
-                }
+            if(isEqualParameters(appliance, criteria)) {
+                appliancesSearchByCriteria.add(appliance);
             }
         }
+        return appliancesSearchByCriteria;
+    }
 
-        return appliancesByCriteria;
+    private boolean isEqualParameters(Appliance appliance, Criteria criteria) {
+        if (isEqualApplianceType(appliance, criteria)) {
+            parametersOfInstance = getParemetrsOfInstance(appliance);
+            return isEqualCriteria(parametersOfInstance, criteria);
+        }
+        return false;
     }
 
     private Map<String, Object> getParemetrsOfInstance(Appliance appliance) {
@@ -56,21 +58,15 @@ public class RefrigeratorSearcher implements Searchable{
         return parametersOfInstance;
     }
 
-    private boolean isValidInstance(Map<String, Object> putInside, Criteria criteria) {
-        int criteriaAmount = criteria.getCriteria().entrySet().size();
-
-        for (Map.Entry<String, Object> instanceParameter : putInside.entrySet()) {
-            for (Map.Entry<String, Object> criteriaParameter : criteria.getCriteria().entrySet()) {
-                if (criteriaParameter.getKey().equals(instanceParameter.getKey()) && criteriaParameter.getValue().equals(instanceParameter.getValue())) {
-                    criteriaAmount--;
-                    if(criteriaAmount == 0) {
-                        return true;
-                    }
-                }
-            }
+    private boolean isEqualCriteria(Map<String, Object> putInside, Criteria criteria) {
+        if (putInside.entrySet().retainAll(criteria.getCriteria().entrySet())) {
+            return putInside.equals(criteria.getCriteria());
         }
-
         return false;
+    }
+
+    private boolean isEqualApplianceType (Appliance appliance, Criteria criteria) {
+        return appliance.getClass().getSimpleName().equals(criteria.getGroupSearchName());
     }
 
 }

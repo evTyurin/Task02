@@ -19,16 +19,16 @@ public class RefrigeratorParser implements Parcelable {
     private final NodeList elements;
     private Refrigerator refrigerator;
 
-    public RefrigeratorParser(Document document) {
+    RefrigeratorParser(Document document) {
         appliances = new ArrayList<>();
         elements = document.getElementsByTagName(Refrigerator.class.getSimpleName());
     }
 
     public List<Appliance> parseApplianceXML() throws IOException, ParserConfigurationException, SAXException {
 
-        for (int i = 0; i < elements.getLength(); i++) {
+        for (int numberOfAppliance = 0; numberOfAppliance < elements.getLength(); numberOfAppliance++) {
 
-            refrigerator = createAppliance(elements, i);
+            refrigerator = createAppliance(elements, numberOfAppliance);
             appliances.add(refrigerator);
             refrigerator = null;
         }
