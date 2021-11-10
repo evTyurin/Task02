@@ -9,7 +9,7 @@ import java.util.List;
 public class ApplianceXMLParser {
 
     private Parsable parse;
-    public static List<Appliance> appliances;
+    private List<Appliance> appliances;
     private final ApplianceHandlerUtil instance;
 
     public void setParse(Parsable parse) {

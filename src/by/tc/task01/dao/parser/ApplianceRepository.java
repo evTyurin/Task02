@@ -21,6 +21,10 @@ public class ApplianceRepository {
         return data;
     }
 
+    public ApplianceXMLParser getParser() {
+        return parser;
+    }
+
     public static ApplianceRepository getInstance() {
         if (instance == null) {
             instance = new ApplianceRepository();

@@ -1,6 +1,8 @@
 package by.tc.task01.main;
 
 //import by.tc.task01.dao.searcher.OvenSearcher;
+import by.tc.task01.dao.parser.ApplianceRepository;
+import by.tc.task01.dao.parser.ApplianceXMLParser;
 import by.tc.task01.dao.util.ApplianceHandlerUtil;
 import by.tc.task01.entity.Appliance;
 
@@ -35,14 +37,22 @@ public class Main {
 
         PrintApplianceInfo.print(applianceWithParameters);
 
+        //////////////////////////////////////////////////////////////////
+
         service.add(new Oven("Zanussi", 100, 250,10,50,100,180,120));
+
+        PrintApplianceInfo.print(ApplianceRepository.getInstance().getData());
+
+        //////////////////////////////////////////////////////////////////
 
         Criteria criteriaRefrigerator = new Criteria(SearchCriteria.Refrigerator.class.getSimpleName());
         criteriaRefrigerator.add(SearchCriteria.Refrigerator.OVERALL_CAPACITY.toString(), 300.0);
-        criteriaRefrigerator.add(SearchCriteria.Refrigerator.WEIGHT.toString(), 30.0);
+        criteriaRefrigerator.add(SearchCriteria.Refrigerator.WIDTH.toString(), 80.0);
 
         applianceWithParameters = service.find(criteriaRefrigerator);
 
         PrintApplianceInfo.print(applianceWithParameters);
+
+        //////////////////////////////////////////////////////////////////
     }
 }

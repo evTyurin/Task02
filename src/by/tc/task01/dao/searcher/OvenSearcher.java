@@ -33,13 +33,13 @@ class OvenSearcher implements Searchable{
 
     private boolean isEqualParameters(Appliance appliance, Criteria criteria) {
         if (isEqualApplianceType(appliance, criteria)) {
-            parametersOfInstance = getParemetrsOfInstance(appliance);
+            parametersOfInstance = getParametersOfInstance(appliance);
             return isEqualCriteria(parametersOfInstance, criteria);
         }
         return false;
     }
 
-    private Map<String, Object> getParemetrsOfInstance(Appliance appliance) {
+    private Map<String, Object> getParametersOfInstance(Appliance appliance) {
         parametersOfInstance = new HashMap();
 
         Oven oven = (Oven) appliance;
@@ -54,9 +54,9 @@ class OvenSearcher implements Searchable{
         return parametersOfInstance;
     }
 
-    private boolean isEqualCriteria(Map<String, Object> putInside, Criteria criteria) {
-        if (putInside.entrySet().retainAll(criteria.getCriteria().entrySet())) {
-            return putInside.equals(criteria.getCriteria());
+    private boolean isEqualCriteria(Map<String, Object> parametersOfInstance, Criteria criteria) {
+        if (parametersOfInstance.entrySet().retainAll(criteria.getCriteria().entrySet())) {
+            return parametersOfInstance.equals(criteria.getCriteria());
         }
         return false;
     }
