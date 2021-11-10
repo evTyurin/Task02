@@ -75,7 +75,8 @@ public class Refrigerator extends Appliance{
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Refrigerator)) return false;
+        if (!super.equals(o)) return false;
         Refrigerator that = (Refrigerator) o;
         return powerConsumption == that.powerConsumption && Double.compare(that.weight, weight) == 0 &&
                 Double.compare(that.freezerCapacity, freezerCapacity) == 0 &&

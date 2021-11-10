@@ -8,7 +8,7 @@ import by.tc.task01.entity.criteria.SearchCriteria;
 
 import java.util.Map;
 
-public class Validator {
+public abstract class Validator {
 
     /**
      * Check if chosen criteria are valid (bigger than 0)

@@ -1,5 +1,6 @@
 package by.tc.task01.dao.adder;
 
+import by.tc.task01.dao.exeption.DAOException;
 import by.tc.task01.dao.util.ApplianceHandlerUtil;
 import by.tc.task01.entity.Appliance;
 import by.tc.task01.entity.Oven;
@@ -7,25 +8,21 @@ import by.tc.task01.entity.criteria.SearchCriteria;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import java.io.IOException;
 
 public class OvenAdder implements Addable {
     private final ApplianceHandlerUtil instance;
     private final Document documentForAdding;
 
-    OvenAdder() throws IOException, SAXException, ParserConfigurationException {
+    OvenAdder() {
         instance = ApplianceHandlerUtil.getInstance();
         documentForAdding = instance.getDocument();
     }
 
     @Override
-    public boolean add(Appliance appliance) throws TransformerException {
+    public boolean add(Appliance appliance) {
         boolean flag = setNodeListElement(appliance);
         if (flag) {
             writeToXML();
@@ -53,15 +50,18 @@ public class OvenAdder implements Addable {
         return element.hasAttributes();
     }
 
-    private void writeToXML() throws TransformerException {
-        Transformer transformer = TransformerFactory.newInstance().newTransformer();
-        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+    private void writeToXML() {
+        try {
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 
-        DOMSource source = new DOMSource(documentForAdding);
+            DOMSource source = new DOMSource(documentForAdding);
 
-        StreamResult result = new StreamResult(instance.getApplianceXMLPath());
+            StreamResult result = new StreamResult(instance.getApplianceXMLPath());
 
-        transformer.transform(source, result);
+            transformer.transform(source, result);
+        } catch ( TransformerException e) {
+            DAOException.throwException(e);
+        }
     }
-
 }

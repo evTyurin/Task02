@@ -1,5 +1,6 @@
 package by.tc.task01.dao.util;
 
+import by.tc.task01.dao.exeption.DAOException;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
@@ -35,21 +36,13 @@ public class ApplianceHandlerUtil {
         this.documentForParsing = documentForParsing;
     }
 
-    private ApplianceHandlerUtil() throws ParserConfigurationException, IOException, SAXException {
-        try {
+    private ApplianceHandlerUtil() {
             updateDocumentForParsing();
-        } catch (ParserConfigurationException | IOException | SAXException ignore) {
-            throw new RuntimeException(){};
-        }
     }
 
     public static ApplianceHandlerUtil getInstance() {
-        try {
-            if (instance == null) {
-                instance = new ApplianceHandlerUtil();
-            }
-        } catch (ParserConfigurationException | IOException | SAXException ignore) {
-
+        if (instance == null) {
+            instance = new ApplianceHandlerUtil();
         }
         return instance;
     }
@@ -59,16 +52,23 @@ public class ApplianceHandlerUtil {
         return new File(Objects.requireNonNull(classLoader.getResource(pathToXML)).getFile());
     }
 
-    public void updateDocumentForParsing() throws ParserConfigurationException, IOException, SAXException {
+    public void updateDocumentForParsing()  {
         documentForParsing = getDocumentForParsing();
     }
 
-    public Document getDocumentForParsing() throws ParserConfigurationException, IOException, SAXException {
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = factory.newDocumentBuilder();
-
-        documentForParsing = builder.parse(getApplianceXMLPath());
-
+    public Document getDocumentForParsing()  {
+        try {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            documentForParsing = builder.parse(getApplianceXMLPath());
+        }
+        catch (ParserConfigurationException e) {
+            DAOException.throwException(e);
+        } catch (SAXException e) {
+            DAOException.throwException(e);
+        } catch (IOException e) {
+            DAOException.throwException(e);
+        }
         return documentForParsing;
     }
 }

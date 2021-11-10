@@ -6,14 +6,10 @@ import by.tc.task01.entity.criteria.SearchCriteria;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OvenParser implements Parcelable {
+public class OvenParser implements Parsable {
     private final List<Appliance> appliances;
     private final NodeList elements;
     private Oven oven;
@@ -24,7 +20,7 @@ public class OvenParser implements Parcelable {
     }
 
     @Override
-    public List<Appliance> parseApplianceXML() throws IOException, ParserConfigurationException, SAXException {
+    public List<Appliance> parseApplianceXML() {
 
         for (int i = 0; i < elements.getLength(); i++) {
 

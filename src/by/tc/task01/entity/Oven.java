@@ -75,9 +75,12 @@ public class Oven extends Appliance{
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Oven)) return false;
+        if (!super.equals(o)) return false;
         Oven oven = (Oven) o;
-        return powerConsumption == oven.powerConsumption && Double.compare(oven.weight, weight) == 0 && capacity == oven.capacity && Double.compare(oven.depth, depth) == 0 && Double.compare(oven.height, height) == 0 && Double.compare(oven.width, width) == 0;
+        return powerConsumption == oven.powerConsumption && Double.compare(oven.weight, weight) == 0 &&
+                capacity == oven.capacity && Double.compare(oven.depth, depth) == 0 &&
+                Double.compare(oven.height, height) == 0 && Double.compare(oven.width, width) == 0;
     }
 
     @Override

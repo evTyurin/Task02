@@ -6,14 +6,10 @@ import by.tc.task01.entity.criteria.SearchCriteria;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RefrigeratorParser implements Parcelable {
+public class RefrigeratorParser implements Parsable {
 
     private final List<Appliance> appliances;
     private final NodeList elements;
@@ -24,7 +20,7 @@ public class RefrigeratorParser implements Parcelable {
         elements = document.getElementsByTagName(Refrigerator.class.getSimpleName());
     }
 
-    public List<Appliance> parseApplianceXML() throws IOException, ParserConfigurationException, SAXException {
+    public List<Appliance> parseApplianceXML(){
 
         for (int numberOfAppliance = 0; numberOfAppliance < elements.getLength(); numberOfAppliance++) {
 

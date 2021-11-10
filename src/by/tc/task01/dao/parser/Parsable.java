@@ -7,7 +7,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.List;
 
-public interface Parcelable {
+public interface Parsable {
 
     /**
      * Parse XML file to create List of Appliance instances
@@ -18,5 +18,5 @@ public interface Parcelable {
      * @throws ParserConfigurationException
      * @throws SAXException
      */
-    List<Appliance> parseApplianceXML() throws IOException, ParserConfigurationException, SAXException;
+    List<Appliance> parseApplianceXML();
 }

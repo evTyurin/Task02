@@ -3,11 +3,6 @@ package by.tc.task01.dao.searcher;
 import by.tc.task01.entity.Appliance;
 import by.tc.task01.entity.criteria.Criteria;
 import by.tc.task01.entity.criteria.SearchCriteria;
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
-import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
@@ -17,18 +12,19 @@ public class ApplianceSearcher {
     private OvenSearcher ovenSearcher;
     private RefrigeratorSearcher refrigeratorSearcher;
 
-    public static ApplianceSearcher getApplianceSearcher() throws IOException, ParserConfigurationException, SAXException {
-        instance = new ApplianceSearcher();
+    public static ApplianceSearcher getInstance() {
+        if (instance == null) {
+            instance = new ApplianceSearcher();
+        }
         return instance;
     }
 
-    public ApplianceSearcher() throws IOException, ParserConfigurationException, SAXException {
-
+    public ApplianceSearcher() {
         ovenSearcher = new OvenSearcher();
         refrigeratorSearcher = new RefrigeratorSearcher();
     }
 
-    public List<Appliance> search(Criteria criteria) throws TransformerException {
+    public List<Appliance> search(Criteria criteria) {
         switch (criteria.getGroupSearchName()) {
             case SearchCriteria.OVEN: {
                 return instance.ovenSearcher.search(criteria);

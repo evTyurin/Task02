@@ -1,4 +1,4 @@
-package by.tc.task01.service.impl;
+package by.tc.task01.service;
 
 import by.tc.task01.dao.ApplianceDAO;
 import by.tc.task01.dao.DAOFactory;
@@ -16,6 +16,8 @@ import java.util.List;
 
 public class ApplianceServiceImpl implements ApplianceService {
 
+    ApplianceServiceImpl(){}
+
     /**
      * Find of appliances by chosen criteria
      * @param criteria
@@ -25,15 +27,14 @@ public class ApplianceServiceImpl implements ApplianceService {
      * @throws SAXException
      * @throws TransformerException
      */
-    @Override
-    public List<Appliance> find(Criteria criteria) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
+    @Override
+    public List<Appliance> find(Criteria criteria) {
         if (!Validator.criteriaValidator(criteria)) {
             return Collections.EMPTY_LIST;
         }
         DAOFactory factory = DAOFactory.getInstance();
         ApplianceDAO applianceDAO = factory.getApplianceDAO();
-
         return applianceDAO.find(criteria);
     }
 
@@ -48,13 +49,11 @@ public class ApplianceServiceImpl implements ApplianceService {
      */
 
     @Override
-    public boolean add(Appliance appliance) throws ParserConfigurationException, IOException, TransformerException, SAXException {
-
+    public boolean add(Appliance appliance) {
         if (Validator.applianceValidator(appliance)) {
             DAOFactory factory = DAOFactory.getInstance();
             ApplianceDAO applianceDAO = factory.getApplianceDAO();
-            applianceDAO.add(appliance);
-            return true;
+            return applianceDAO.add(appliance);
         } else {
             return false;
         }

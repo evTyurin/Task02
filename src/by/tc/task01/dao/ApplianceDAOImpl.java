@@ -1,6 +1,5 @@
-package by.tc.task01.dao.impl;
+package by.tc.task01.dao;
 
-import by.tc.task01.dao.ApplianceDAO;
 import by.tc.task01.dao.adder.ApplianceAdder;
 import by.tc.task01.dao.searcher.ApplianceSearcher;
 import by.tc.task01.entity.Appliance;
@@ -14,18 +13,16 @@ import java.util.List;
 
 public final class ApplianceDAOImpl implements ApplianceDAO {
 
-    public ApplianceDAOImpl() {}
+    ApplianceDAOImpl() {}
 
     @Override
-    public List<Appliance> find(Criteria criteria) throws IOException, ParserConfigurationException, SAXException, TransformerException {
-
-        ApplianceSearcher applianceSearcher = ApplianceSearcher.getApplianceSearcher();
+    public List<Appliance> find(Criteria criteria) {
+        ApplianceSearcher applianceSearcher = ApplianceSearcher.getInstance();
         return applianceSearcher.search(criteria);
     }
 
     @Override
-    public boolean add(Appliance appliance) throws ParserConfigurationException, IOException, TransformerException, SAXException {
-
+    public boolean add(Appliance appliance) {
         ApplianceAdder applianceAdder = ApplianceAdder.getInstance();
         return applianceAdder.add(appliance);
     }

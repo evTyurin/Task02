@@ -1,11 +1,6 @@
 package by.tc.task01.dao.parser;
 
 import by.tc.task01.entity.Appliance;
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.ws.http.HTTPException;
-import java.io.IOException;
 import java.util.List;
 
 public class ApplianceRepository {
@@ -14,23 +9,12 @@ public class ApplianceRepository {
     private final ApplianceXMLParser parser;
 
     private ApplianceRepository() {
-
         parser = new ApplianceXMLParser();
-        try {
-            data = parser.parse();
-        } catch (ParserConfigurationException | IOException | SAXException e) {
-            throw new RuntimeException() {};
-        }
-
+        data = parser.parse();
     }
 
     public void updateApplianceRepository() {
-        try {
-            data = parser.parse();
-        } catch (ParserConfigurationException | IOException | SAXException e) {
-            throw new RuntimeException() {};
-        }
-
+        data = parser.parse();
     }
 
     public List<Appliance> getData(){

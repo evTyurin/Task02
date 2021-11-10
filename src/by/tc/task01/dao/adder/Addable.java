@@ -15,5 +15,5 @@ public interface Addable {
      * @throws TransformerException
      */
 
-    boolean add(Appliance newAppliance) throws TransformerException;
+    boolean add(Appliance newAppliance);
 }

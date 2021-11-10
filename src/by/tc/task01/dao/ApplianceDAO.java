@@ -22,7 +22,7 @@ public interface ApplianceDAO {
      * @throws SAXException
      * @throws TransformerException
      */
-    List<Appliance> find(Criteria criteria) throws IOException, ParserConfigurationException, SAXException, TransformerException;
+    List<Appliance> find(Criteria criteria);
 
     /**
      * Add properties of the instance of Appliance to XML file
@@ -34,6 +34,5 @@ public interface ApplianceDAO {
      * @throws TransformerException
      * @throws SAXException
      */
-    boolean add(Appliance appliance) throws ParserConfigurationException, IOException, TransformerException, SAXException;
-
+    boolean add(Appliance appliance);
 }
