@@ -4,11 +4,6 @@ import by.tc.task01.dao.adder.ApplianceAdder;
 import by.tc.task01.dao.searcher.ApplianceSearcher;
 import by.tc.task01.entity.Appliance;
 import by.tc.task01.entity.criteria.Criteria;
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
-import java.io.IOException;
 import java.util.List;
 
 public final class ApplianceDAOImpl implements ApplianceDAO {

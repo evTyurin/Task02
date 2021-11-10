@@ -15,10 +15,6 @@ public interface ApplianceService {
      *
      * @param criteria
      * @return List of Appliance instances chosen by criteria
-     * @throws IOException
-     * @throws ParserConfigurationException
-     * @throws SAXException
-     * @throws TransformerException
      */
 
     List<Appliance> find(Criteria criteria);
@@ -28,10 +24,6 @@ public interface ApplianceService {
      *
      * @param appliance
      * @return true if adding was successful
-     * @throws ParserConfigurationException
-     * @throws IOException
-     * @throws TransformerException
-     * @throws SAXException
      */
     boolean add(Appliance appliance);
 

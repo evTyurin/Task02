@@ -1,62 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-		targetNamespace="http://www.epam.by/appliance"
-		xmlns:tns="http://www.epam.by/appliance">
+		targetNamespace="http://www.epam.by/catalog">
 
-	<element name="appliances">
+	<element name="catalog">
 		<complexType>
 			<sequence>
+
 				<element name="Ovens">
 					<complexType>
 						<sequence>
 							<choice minOccurs="0" maxOccurs="unbounded">
-								<element name="Oven" type="tns:Oven" />
+								<element name="Oven" type="anyType"/>
 							</choice>
 						</sequence>
 					</complexType>
 				</element>
-				<element name="Refrigerators" type="tns:Refrigerator">
+
+				<element name="Refrigerators">
 					<complexType>
 						<sequence>
 							<choice minOccurs="0" maxOccurs="unbounded">
-								<element name="Refrigerator" type="tns:Refrigerator"/>
+								<element name="Refrigerator" type="anyType"/>
 							</choice>
 						</sequence>
 					</complexType>
 				</element>
+
 			</sequence>
 		</complexType>
 	</element>
-
-
-
-
-	<complexType name="Oven">
-		<sequence>
-			<element name="CAPACITY" type="int" />
-			<element name="DEPTH" type="double" />
-			<element name="HEIGHT" type="double" />
-			<element name="POWER_CONSUMPTION" type="int" />
-			<element name="PRICE" type="double" />
-			<element name="WEIGHT" type="double" />
-			<element name="WIDTH" type="double" />
-		</sequence>
-	</complexType>
-
-	<complexType name="Refrigerator">
-		<sequence>
-			<element name="CAPACITY" type="int" />
-			<element name="DEPTH" type="double" />
-			<element name="HEIGHT" type="double" />
-			<element name="POWER_CONSUMPTION" type="int" />
-			<element name="PRICE" type="double" />
-			<element name="WEIGHT" type="double" />
-			<element name="WIDTH" type="double" />
-		</sequence>
-	</complexType>
-
-
 
 </schema>
 

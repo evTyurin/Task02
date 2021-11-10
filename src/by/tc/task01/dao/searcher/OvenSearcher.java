@@ -5,12 +5,10 @@ import by.tc.task01.entity.Appliance;
 import by.tc.task01.entity.Oven;
 import by.tc.task01.entity.criteria.Criteria;
 import by.tc.task01.entity.criteria.SearchCriteria;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
- class OvenSearcher implements Searchable{
+import java.util.*;
+
+class OvenSearcher implements Searchable{
     private ApplianceRepository instance;
     private final List<Appliance> appliances;
     private List<Appliance> appliancesSearchByCriteria;

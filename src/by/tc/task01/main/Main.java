@@ -44,58 +44,5 @@ public class Main {
         applianceWithParameters = service.find(criteriaRefrigerator);
 
         PrintApplianceInfo.print(applianceWithParameters);
-
-
-        ///////////////////////////////////
-
-
-//        ApplianceDAOImpl dfsdf = new ApplianceDAOImpl();
-//        dfsdf.add(new Oven("hiii", 100, 250,10,50,100,180,120));
-
-//        try {
-//            IOException oi = new IOException();
-//            oi.initCause(new IOException("Actual cause"));
-//            throw oi;
-//        } catch (IOException oi) {
-//            System.out.println(oi);
-//            System.out.println(oi.getCause());
-//            oi.initCause((new IOException("dfd")));
-//
-//            System.out.println(oi);
-//
-//            throw new RuntimeException("df", new IOException() );
-//        }
-//
-//        public void TRExe (IOException e) {
-//            e.initCause(e);
-//            throw new RuntimeException("df", e);
-//        }
-//
-//        try {
-//            IOException fdfsf = new IOException();
-//            fdfsf.initCause(fdfsf);
-//            throw fdfsf;
-//
-//        } catch (IOException eee) {
-//            throw new RuntimeException("df", eee);
-//        }
-
-//        DAOExeption daoExeption = new DAOExeption();
-//        daoExeption.exept(new IOException());
-
-//        try {
-//            IOException oi = new IOException();
-//            oi.initCause(new IOException("Actual cause"));
-//            throw oi;
-//        } catch (IOException oi) {
-//            System.out.println(oi);
-//            System.out.println(oi.getCause());
-//            oi.initCause((new IOException("dfd")));
-//
-//            System.out.println(oi);
-
-//            throw new RuntimeException("df", new IOException() );
-//        }
-
     }
 }

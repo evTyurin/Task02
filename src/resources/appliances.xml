@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 
-<appliances xmlns = "http://www.epam.by/appliance"
+<n:catalog xmlns:n = "http://www.epam.by/catalog"
             xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
-            xsi:schemaLocation = "http://www.epam.by/appliance appliances.xsd">
+            xsi:schemaLocation = "http://www.epam.by/catalog appliances.xsd">
 
     <Ovens>
         <Oven CAPACITY="100" DEPTH="100.0" HEIGHT="100.0" MODEL="mark2" POWER_CONSUMPTION="100" PRICE="100.0" WEIGHT="100.0" WIDTH="100.0"/>
@@ -15,4 +15,5 @@
         <Refrigerator FREEZER_CAPACITY="15" HEIGHT="180.0" MODEL="Zusim" OVERALL_CAPACITY="300" POWER_CONSUMPTION="200" PRICE="500.0" WEIGHT="30.0" WIDTH="80.0"/>
     </Refrigerators>
 
-</appliances>
+
+</n:catalog>
